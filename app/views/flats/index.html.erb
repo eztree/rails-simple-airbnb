@@ -1,0 +1,35 @@
+<div class="uk-container">
+
+  <div>
+    <h1>All our flats (<%= @flats.size %>)</h1>
+  </div>
+
+  <div class="uk-flex uk-flex-wrap-between">
+    <% @flats.each do |flat| %>
+      <div class="uk-card uk-card-default uk-width-1-2@m uk-card-hover uk-margin-medium-right">
+          <div class="uk-card-header">
+              <div class="uk-grid-small uk-flex-middle" uk-grid>
+                  <div class="uk-width-expand">
+                      <h5 class="uk-card-title uk-margin-remove-bottom uk-text-bold"><%= flat.name %></h3>
+                      <p class="uk-text-meta uk-margin-remove-top"><%= flat.address %></p>
+                  </div>
+              </div>
+          </div>
+              <div class="uk-card-media-bottom">
+                <img src="<%= flat.picture_url %>" alt="">
+              </div>
+          <div class="uk-card-body">
+            <p><%= flat.description %></p>
+            <p class="uk-text-middle">
+              <i class="tiny material-icons uk-text-middle">people</i> <%= flat.number_of_guests %>
+              <i class="tiny material-icons uk-text-middle">attach_money</i> <%= flat.price_per_night %>
+            </p>
+          </div>
+          <div class="uk-card-footer">
+            <%= link_to "More info", flat_path(flat) %> | <%= link_to "Edit", edit_flat_path(flat) %> | <%= link_to "Remove", flat_path(flat), method: :delete, data: { confirm: "Ya sure?" } %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
